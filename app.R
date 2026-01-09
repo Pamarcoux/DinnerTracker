@@ -1,10 +1,19 @@
 library(shiny)
 library(bslib)
 
+source(here('src/Load_and_clean.R'))
+source(here('src/Helpers.R'))
+
+
+count_visits(Data_diner,"Claire")
+dining_partners(Data_diner,"Claire")
+meal_eaten(Data_diner,"Claire")
+
+
 # Define UI for app that draws a histogram ----
 ui <- page_sidebar(
   # App title ----
-  title = "Hello Shiny!",
+  title = "Hello World",
   # Sidebar panel for inputs ----
   sidebar = sidebar(
     # Input: Slider for the number of bins ----
@@ -12,7 +21,7 @@ ui <- page_sidebar(
       inputId = "bins",
       label = "Number of bins:",
       min = 1,
-      max = 50,
+      max = 5,
       value = 30
     )
   ),
@@ -36,7 +45,7 @@ server <- function(input, output) {
     x    <- faithful$waiting
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     
-    hist(x, breaks = bins, col = "#007bc2", border = "white",
+    hist(x, breaks = bins, col = "#007bc2", border = "orange",
          xlab = "Waiting time to next eruption (in mins)",
          main = "Histogram of waiting times")
     
@@ -45,3 +54,4 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
+

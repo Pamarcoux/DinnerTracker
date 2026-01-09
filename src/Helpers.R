@@ -2,7 +2,7 @@ count_visits <- function(df,person) {
   df |> 
     filter(Name==person) |> 
     distinct(Date, Diner_id, Name) |> 
-    count(Name, Name = "n_visits")
+    count(Name)
 }
 
 dining_partners <- function(df, person) {
