@@ -1,8 +1,7 @@
-
 if (!require("pacman")) install.packages("pacman")
 
 pacman::p_load(
-  tidyverse, here, rio, shiny,lubridate
+  tidyverse, here, rio
 )
 
 Data_diner <- import(here('data/Data_diner.tsv'),
