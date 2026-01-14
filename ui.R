@@ -2,32 +2,39 @@ ui <- page_sidebar(
   # App title ----
   title = "DinerTracker",
   fillable = TRUE,  
+  
+  theme = bs_theme(
+    version = 5,
+    bootswatch = "flatly",   # clean, professional
+    base_font = font_google("Inter"),
+    heading_font = font_google("Inter"),
+    primary = "#2C3E50"
+  ),
 
   # Sidebar panel for inputs ----
   sidebar = sidebar(
-      # sélectionneur pour la personne
-      selectInput(
-        inputId = "Select_Guest",
-        label = "Select Guest",
-        choices = List_person,
-        selected = List_person[1],
-        multiple = FALSE
-      ),
-      # # sélecteur pour le diner
-      # selectInput(
-      #   inputId = "Select_Diner",
-      #   label = "Sélectionnez le diner",
-      #   choices = List_diner, 
-      #   selected = "All",
-      #   multiple = TRUE
-      # )
-      
+    width = 300,
+    
+    h5("Filters"),
+    selectInput(
+      inputId = "Select_Guest",
+      label = "Guest",
+      choices = List_person,
+      selected = List_person[1]
     ),
     
+    hr(),
+    
+    p(
+      "Explore dinner history, menus, and social interactions.",
+      class = "text-muted"
+    )
+  ),
         layout_columns( 
           # Card 1 : Number of Visit
           card(
             card_header("Number of Visit"),
+            
              textOutput("number_visit")
             ), 
           # Card 2 : Meal Eaten
