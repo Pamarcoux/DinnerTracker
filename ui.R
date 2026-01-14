@@ -13,14 +13,14 @@ ui <- page_sidebar(
         selected = List_person[1],
         multiple = FALSE
       ),
-      # sélecteur pour le diner
-      selectInput(
-        inputId = "Select_Diner",
-        label = "Sélectionnez le diner",
-        choices = List_diner, 
-        selected = "All",
-        multiple = TRUE
-      )
+      # # sélecteur pour le diner
+      # selectInput(
+      #   inputId = "Select_Diner",
+      #   label = "Sélectionnez le diner",
+      #   choices = List_diner, 
+      #   selected = "All",
+      #   multiple = TRUE
+      # )
       
     ),
     
@@ -47,7 +47,7 @@ ui <- page_sidebar(
           # Card 3 : Guest Met
           card(card_header("Guests Met"),
                tableOutput("table_meet")), 
-          col_widths = c(2, 4.5, 4.4) 
+          col_widths = c(2,5,5) 
 
     )
     

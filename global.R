@@ -13,4 +13,3 @@ List_diner <- Data_diner |> select(Diner_name) |> distinct() |> pull()
 
 # ------ Global variables ------------------------------------------------------
 source(here('R/Helpers.R'))
-source(here('R/Plots_Helpers.R'))
