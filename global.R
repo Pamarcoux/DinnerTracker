@@ -1,8 +1,7 @@
-if (!require("pacman")) install.packages("pacman")
-
-pacman::p_load(
-  tidyverse, here, rio, shiny, lubridate, bslib
-)
+library(shiny)
+library(dplyr)
+library(bslib)
+library(here)
 
 # ------ Load data -------------------------------------------------------------
 source(here('R/Load_and_clean.R'))

@@ -1,10 +1,4 @@
-if (!require("pacman")) install.packages("pacman")
-
-pacman::p_load(
-  tidyverse, here, rio
-)
-
-Data_diner <- import(here('data/Data_diner.tsv'),
+Data_diner <- import(here::here('data/Data_diner.tsv'),
                      na = c("", "NA")) |> 
-  mutate(Date = as_date(Date,format = "%d/%m/%Y")) |> 
-  mutate(across(where(is.character), ~na_if(.x, "")))
+  dplyr::mutate(Date = as_date(Date,format = "%d/%m/%Y")) |> 
+  dplyr::mutate(across(where(is.character), ~na_if(.x, "")))

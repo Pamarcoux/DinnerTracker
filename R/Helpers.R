@@ -1,23 +1,29 @@
-count_visits <- function(df,person) {
-  df |> 
-    filter(Name==person) |> 
-    distinct(Date, Diner_id, Name) |> 
-    count(Name) |> 
-    pull()
+count_visits <- function(df, person) {
+  df |>
+    dplyr::filter(Name == person) |>
+    dplyr::distinct(Date, Diner_id, Name) |>
+    dplyr::count(Name) |>
+    dplyr::pull(n)
 }
 
 dining_partners <- function(df, person) {
-  df %>%
-    filter(Diner_id %in% df$Diner_id[df$Name == person]) %>%
-    filter(Name != person) %>%
-    group_by(Name) |> 
-    summarise(N_meeting = n())
+  df |>
+    dplyr::filter(
+      Diner_id %in% df$Diner_id[df$Name == person],
+      Name != person
+    ) |>
+    dplyr::group_by(Name) |>
+    dplyr::summarise(
+      N_meeting = dplyr::n(),
+      .groups = "drop"
+    )
 }
 
+
 meal_eaten <- function(df, person) {
-  df_person <-  df |> 
-    filter(Name == person)
-    
+  df_person <- df |>
+    dplyr::filter(Name == person)
+  
   list(
     Entree = tibble::tibble(
       Entree = df_person$Entree[!is.na(df_person$Entree)]
@@ -30,3 +36,4 @@ meal_eaten <- function(df, person) {
     )
   )
 }
+
